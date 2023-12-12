@@ -1,24 +1,37 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import '../css/style.css'
+
+
+// function mostrarApi(api) {
+
+//   const aparezcaApi = document.getElementById('ACA')
+  
+//   const {strApi} = apiRest;
+//   const section = document.createElement('DIV');
+//   section.value = strApi;
+//   section.textContent = strApi;
+  
+//   aparezcaApi.appendChild(section)
+  
+// }
+
+async function logMovies() {
+  const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
+  const movies = await response.json();
+   console.log(movies.text);
+   return movies.text
+}
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
     <h1>Hello Vite!</h1>
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+    <section id="ACA">
+    
+    </section>
+    
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+logMovies(document.querySelector('#ACA'))
