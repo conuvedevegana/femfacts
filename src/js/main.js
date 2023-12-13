@@ -1,31 +1,18 @@
 import '../css/style.css'
 
 
-// function mostrarApi(api) {
-
-//   const aparezcaApi = document.getElementById('ACA')
-  
-//   const {strApi} = apiRest;
-//   const section = document.createElement('DIV');
-//   section.value = strApi;
-//   section.textContent = strApi;
-  
-//   aparezcaApi.appendChild(section)
-  
-// }
-
 async function logMovies() {
-  const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
-  const movies = await response.json();
-   console.log(movies.text);
-   return movies.text
+  const response =  await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
+  const movies =  await response.json()
+    console.log(movies.text);
+    return movies
 }
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <h1>Hello Vite!</h1>
+    <h1>FemFacts</h1>
     <div class="card">
-      <button id="counter" type="button"></button>
+      <button id="counter" type="button">QUE SE VEA EL BOTON</button>
     </div>
     <section id="ACA">
     
