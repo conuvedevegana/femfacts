@@ -5,7 +5,8 @@ async function logMovies() {
   const response =  await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
   const movies =  await response.json()
     console.log(movies.text);
-    return movies
+    
+    return movies.text
 }
 
 document.querySelector('#app').innerHTML = `
