@@ -21,4 +21,6 @@ async function getRandomDataFromApi() {
 //   </div>
 // `
 // }
+
+
 getRandomDataFromApi()
