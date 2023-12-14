@@ -1,25 +1,24 @@
 import '../css/style.css'
 
-const randomDataElement = document.querySelector('#randomData');
+const randomDataElement = document.querySelector('#app');
+const api_url = "https://uselessfacts.jsph.pl/api/v2/facts/random"
+
 
 async function getRandomDataFromApi() {
-  const response =  await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random");
+  const response =  await fetch(api_url);
   const data =  await response.json()
 
-  randomDataElement.textContent = data.text
+  randomDataElement.innerHTML = data.text
 }
 
-const printData = () => {document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>FemFacts</h1>
-    <div class="card">
-      <button id="counter" type="button">QUE SE VEA EL BOTON</button>
-    </div>
-    <section id="randomData">
+// const printData = () => {document.querySelector('#app').innerHTML = `
+//   <div>
     
-    </section>
+//     <section id="randomData">
     
-  </div>
-`
-}
+//     </section>
+    
+//   </div>
+// `
+// }
 getRandomDataFromApi()
