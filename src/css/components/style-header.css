@@ -1,0 +1,19 @@
+.header__container{
+    background-color: var(--white);
+    width: 100%;
+    height: 4rem;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Judson;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 600;
+    gap: 1rem
+}
+.header__container img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
