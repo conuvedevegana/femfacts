@@ -23,66 +23,67 @@ body {
 a {
   font-weight: 500;
   color: var(--primary-color);
-  text-decoration: inherit;
-  background-color: #3A612F;
+  
 }
 
 a:hover {
-  color: #535bf2;
+  color: #2A7E12;
 }
 
 
-h1 {
-  font-size: var(--h1-D);
-  line-height: 1.1;
-}
 .book__container{
   width: 80%;
 }
 
-#app {
+.app {
   /* max-width: 1280px; */
   margin: 2.5rem 1.5rem;
   padding: 2rem;
   text-align: center;
+  font-size: var(--text-D);
 }
 
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--primary-color);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
 
 .btn__second {
-  border-radius: 8px;
+  border-radius: .5rem;
+  border: 1px solid transparent;
   gap: .5rem;
+  padding: 0.6em 1.2em;
   cursor: pointer;
   transition: border-color 0.25s;
   border: 1px solid var(--primary-color);
   background: var(--main-bg-color);
   color: var(--primary-color);
-  /* box-shadow: 10px 8px 19.6px 0px rgba(0, 0, 0, 0.15); */
   display: flex;
   align-items: center;
+  font-size: 1em;
+  font-weight: 600;
 }
+
+.btn__second:hover {
+  border: 1px solid #E9F1E7;
+}
+.btn__second:hover {
+  background-color: #E9F1E7;
+}
+
 .btn__primary {
-  border-radius: 8px;
+  border-radius: .5rem;
   gap: .5rem;
   cursor: pointer;
   transition: border-color 0.25s;
   border: 1px solid var(--primary-color);
   background: var(--primary-color);
   color: var(--main-bg-color);
-  /* box-shadow: 10px 8px 19.6px 0px rgba(0, 0, 0, 0.15); */
   display: flex;
   align-items: center;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.btn__primary:hover {
+  background-color: #2A7E12;
 }
 
 .btn__primary img{
@@ -97,7 +98,8 @@ button {
   align-items: center;
   justify-content: center;
   margin: 1rem 23rem;
-  height: 45rem;
+  /* height: 45rem; */
+  height: 100%;
   background-color: var(--main-bg-color);
   gap: .5rem;
   border: 0.05rem solid var(--primary-color);
@@ -115,7 +117,7 @@ button {
   font-weight: 400;
   line-height: 62.5px; /* 130.208% */
   text-transform: uppercase;
-  margin: 5rem;
+  margin: 3.5rem;
 }
 .main__container-line{
   display: flex;
@@ -153,7 +155,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 5rem;
+  /* margin: 5rem; */
   height: 30rem;
   background-color: var(--main-bg-color);
   gap: 3rem;
@@ -163,7 +165,13 @@ button {
 .btn__container{
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  align-items: flex-start;
+  width: 60%;
+  margin: 2rem;
   
+}
+.links{
+  margin: 1.5rem;
+  font-size:var(--link-D)
 }
 
