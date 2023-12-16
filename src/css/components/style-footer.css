@@ -3,17 +3,15 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    /* position: absolute; */
     bottom: 0;
-    height: 4.5rem;
+    padding: 2rem 1rem;
     background-color: var(--primary-color);
-    font-size: var(--text-D);
+    font-size: var(--text-M);
     color: var(--white);
-    margin-top: 2rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     .footer__fact {
-        font-size: var(--text-M);
+        font-size: var(--text-D);
     }
 }
