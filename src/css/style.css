@@ -33,13 +33,9 @@ a:hover {
   color: #2A7E12;
 }
 
-#app{
-  background-color: var(--main-bg-color);
-  /* border: 0.05rem solid var(--primary-color); */
-  /* height: calc(100% - 9.5rem); */
-}
 
 .main__container{
+  background-color: var(--main-bg-color);
   padding: 5rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -114,3 +110,45 @@ a:hover {
   height: 1.5rem;
 }
 
+
+@media screen and (min-width: 768px) {
+  .main__container{
+    background-color: var(--light-bg-color)
+  }
+  
+  .main__container-desktop{
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 3rem;
+    justify-content: center;
+    align-items: center;
+    border: 0.05rem solid var(--primary-color);
+    box-shadow: 10px 8px 19.6px 0px rgba(0, 0, 0, 0.15);
+    gap: 6rem;
+  }
+  .main__container h1{
+    font-size: var(--h1-D);
+  }
+  .book__container{
+    font-size: var(--text-D);
+    
+  }
+  .btn__container{
+    flex-direction: row;
+    align-items: flex-start;
+    width: 80%;
+  }
+
+  /* .btn__primary{
+    width: 50%;
+  }
+
+  .btn__second{
+    width: 50%;
+  } */
+  
+  .links a{
+    font-size: var(--link-D);
+  }
+}
