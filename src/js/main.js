@@ -10,7 +10,7 @@ async function getRandomDataFromApi() {
 
   randomDataElement.innerHTML = `
   <div class="main__container">
-  <div class="main__container-desktop">
+  <div class="main__container main__container-desktop">
 
     <h1>GET A RANDOM FACT</h1>
     <div class="main__container-line">
