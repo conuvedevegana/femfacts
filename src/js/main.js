@@ -72,67 +72,68 @@ document.addEventListener('DOMContentLoaded', () =>{
       </div>
     `;
     
-    document.getElementById('btn-fact').addEventListener('click',get_data)
-    document.getElementById('btn-favourites').addEventListener('click',() => add_to_favourites(data))
-    document.getElementById('link-fav').addEventListener('click', print_favourites)
-  }else{
-    return "error";
+      document.getElementById('btn-fact').addEventListener('click',get_data)
+      document.getElementById('btn-favourites').addEventListener('click',() => add_to_favourites(data))
+      document.getElementById('link-fav').addEventListener('click', print_favourites)
+    }else{
+      return "error";
   }
 
 } 
 
-get_data()
+  get_data()
 
-const add_to_favourites= (data)=> {
-  const isFavourite = favouritesList.some((fav) => fav.id === data.id);
+  const add_to_favourites= (data)=> {
 
-  if (!isFavourite) {
-    favouritesList.push(data);
-    console.log('Favorito agregado:', data);
-    showToast('Added to Favourites')
+    const isFavourite = favouritesList.some((fav) => fav.id === data.id);
+
+    if (!isFavourite) {
+      favouritesList.push(data);
+      console.log('Added to Favourite:', data);
+      showToast('Added to Favourites')
+      
+
+    } else{
+      return showToast('This fact is already in Favourites');
+    }
+  }
+
+  const print_favourites = () => {
     
+    const favouritesContainer = document.querySelector('.links');
 
-  } else{
-    return showToast('This fact is already in Favourites');
-  }
+      if(favouritesContainer){
+        console.log(favouritesContainer);
+        // favouritesContainer.innerHTML = ''
 
-}
+        favouritesList.forEach((favourite) => {
+          console.log(favouritesList);
 
-const print_favourites = () => {
-  
-  const favouritesContainer = document.querySelector('.links');
-    if(favouritesContainer){
-      console.log(favouritesContainer);
-      // favouritesContainer.innerHTML = ''
+          const favouriteElement = document.createElement('div');
+          favouriteElement.classList.add('main__container')
+          favouriteElement.textContent = `${favourite.text}`;
 
-      favouritesList.forEach((favourite) => {
-        console.log(favouritesList);
+          favouritesContainer.appendChild(favouriteElement);
+        });
+      }
+  };
 
-        const favouriteElement = document.createElement('div');
-        favouriteElement.classList.add('main__container')
-        favouriteElement.textContent = `${favourite.text}`;
+  function showToast(message) {
+    const toastContainer = document.getElementById('toast-container');
 
-        favouritesContainer.appendChild(favouriteElement);
-      });
-    }
-};
+    if (toastContainer) {
+      const toast = new bootstrap.Toast(toastContainer);
 
-function showToast(message) {
-  const toastContainer = document.getElementById('toast-container');
+      const toastBody = toastContainer.querySelector('.toast-body');
 
-  if (toastContainer) {
-    const toast = new bootstrap.Toast(toastContainer);
-
-    const toastBody = toastContainer.querySelector('.toast-body');
-
-    if (toastBody) {
-      toastBody.textContent = message;
-      toast.show();
+      if (toastBody) {
+        toastBody.textContent = message;
+        toast.show();
+      } else {
+        console.error('Element with class .toast-body not found inside #toast-container');
+      }
     } else {
-      console.error('Element with class .toast-body not found inside #toast-container');
+      console.error('Element with id #toast-container not found');
     }
-  } else {
-    console.error('Element with id #toast-container not found');
   }
-}
-})
+});
