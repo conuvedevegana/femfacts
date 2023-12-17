@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     
     document.getElementById('btn-fact').addEventListener('click',get_data)
     document.getElementById('btn-favourites').addEventListener('click',() => add_to_favourites(data))
-    document.getElementById('link-fav').addEventListener('click', print_favourites)
+    document.getElementById('link-fav').addEventListener('click', take_to_my_favourites)
   }else{
     return "error";
   }
@@ -97,6 +97,28 @@ const add_to_favourites= (data)=> {
   }
 
 }
+
+
+
+const hide_default_view = () => {
+    const mainContainerSection = document.querySelector('.main__container-section');
+    const btnContainer = document.querySelector('.btn__container');
+    
+    mainContainerSection.classList.toggle("d-none");
+    btnContainer.classList.toggle("d-none");
+};
+
+const changeH1 = () => {
+  const heading1 = document.querySelector('h1');
+  heading1.innerHTML = "FAVOURITES";
+} 
+
+const take_to_my_favourites = () => {
+  hide_default_view();
+  print_favourites();
+  changeH1();
+};
+
 
 const print_favourites = () => {
   
