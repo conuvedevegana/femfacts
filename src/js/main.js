@@ -125,19 +125,46 @@ const print_favourites = () => {
   const favouritesContainer = document.querySelector('.links');
     if(favouritesContainer){
       console.log(favouritesContainer);
-      // favouritesContainer.innerHTML = ''
+
+     favouritesContainer.innerHTML = ''
+      if(favouritesList.length === 0){
+          const favouriteElement = document.createElement('div');
+        favouriteElement.classList.add('main__container')
+        favouriteElement.innerHTML = `
+        <div class="book__container">
+          <div>You don’t have any favourite yet.</div>
+         </div>
+        <div>
+          <a href="#">Go get another fact</a>
+        </div>
+      `;
+
+        favouritesContainer.appendChild(favouriteElement);
+      } 
 
       favouritesList.forEach((favourite) => {
         console.log(favouritesList);
 
         const favouriteElement = document.createElement('div');
         favouriteElement.classList.add('main__container')
-        favouriteElement.textContent = `${favourite.text}`;
+        favouriteElement.innerHTML = `
+      
+        
+            <div class="book__container">
+              <div>${favourite.text}</div>
+            </div>
+
+        <div>
+          <a href="#">Go get another fact</a>
+        </div>
+      `;
 
         favouritesContainer.appendChild(favouriteElement);
       });
     }
+
 };
+
 
 function showToast(message) {
   const toastContainer = document.getElementById('toast-container');
@@ -158,3 +185,17 @@ function showToast(message) {
   }
 }
 })
+
+
+/*
+const hide_favourites_view = () => {
+  const favouritesContainer = document.querySelector('.links');
+  const linkToFav = document.querySelector("#link-to-fav");
+  const linkGoBack = document.querySelector(".go-back");
+
+  favouritesContainer.classList.toggle("d-none");
+  linkToFav.classList.toggle("d-none");
+  linkGoBack.classList.toggle("d-none");
+};
+
+document.querySelector(".go-back").addEventListener("click", hide_favourites_view);*/
