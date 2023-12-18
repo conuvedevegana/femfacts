@@ -167,11 +167,11 @@ document.addEventListener('DOMContentLoaded', () =>{
           favouriteElement.innerHTML = `
         
           
-              <div class="book__container">
+              <div class="book__container-fav">
                 <div>${favourite.text}</div>
               </div>
               
-              <img src="./src/assets/icons/decoration.svg" alt="decoration main page" class="card-img-top mb-sm-0">
+              <img src="./src/assets/icons/ornaments.svg" alt="decoration main page" class="main__container-fav-ornament">
 
         `;
 

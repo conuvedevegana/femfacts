@@ -73,6 +73,26 @@ a:hover {
   min-height: 10rem;
 }
 
+.book__container-fav{
+  font-size: var(--text-M);
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  line-height: 1.6875rem;
+  min-height: 5rem;
+}
+
+.main__container-fav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+}
+
+.main__container-fav-ornament{
+  width: 1.5rem;
+  margin: 1.5rem 0;
+}
+
 .btn__container{
   width: 100%;
   gap: 1.5rem;
