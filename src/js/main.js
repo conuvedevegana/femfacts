@@ -130,12 +130,26 @@ document.addEventListener('DOMContentLoaded', () =>{
       favoritClass.classList.toggle("d-none");
   };
 
+   const changeLink = () => {
+    const isFavouritePage = document.querySelector('a');
+    const isPageFav = isFavouritePage.textContent;
+   
+      if (isPageFav !== 'Go get another fact') {
+        isFavouritePage.innerHTML = 'Go get another fact';
+      } else {
+        isFavouritePage.innerHTML = 'Take me to my favourites';
+      }
+      return isPageFav;
+
+  }
+
 
 
   const take_to_my_favourites = () => {
     hide_default_view();
     print_favourites();
     changeH1();
+    changeLink();
   };
 
 
@@ -213,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   get_data()
 
 
-export {get_data,  print_api, add_to_favourites, showToast}  
+export {get_data,  print_api, add_to_favourites, hide_default_view, showToast}  
 
 
 

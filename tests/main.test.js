@@ -1,12 +1,13 @@
 import { describe, it, expect, beforeAll }  from "vitest";
 import { JSDOM } from "jsdom";
-import { get_data, print_api, add_to_favourites, showToast } from "../src/js/main.js";
+import { get_data, print_api, add_to_favourites, hide_default_view, showToast } from "../src/js/main.js";
 
 describe("main", () => {
   let dom;
 
   beforeAll(async () => {
     dom = await JSDOM.fromFile("./index.html", { runScripts: "dangerously" });
+    global.document = dom.window.document;
   });
 
   it("should render the script in html", () => {
@@ -33,6 +34,11 @@ describe("main", () => {
   it("should exist the function add_to_favourites", async () => {
     expect(add_to_favourites).toBeDefined();
     expect(typeof add_to_favourites).toBe("function");
+  });
+
+  it("should exist the function hide_default_view", async () => {
+    expect(hide_default_view).toBeDefined();
+    expect(typeof hide_default_view).toBe("function");
   });
 
 });
