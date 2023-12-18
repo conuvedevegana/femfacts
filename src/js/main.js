@@ -12,7 +12,6 @@ const favouritesList = [];
 document.addEventListener('DOMContentLoaded', () =>{
 
   //Get API
-
   const get_data = async () => {
     await fetch(api_url)
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -29,8 +28,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     })
   }  
   
-// document.querySelector('.main__container-desktop').getElementsByClassName.display = "none";
-
 
   // print response-data-API
   const print_api = (data) => {
@@ -63,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             
             <button id="btn-favourites" type="button" class="btn__second"><img src="./src/assets/icons/favourite-icon.svg" alt="add to favourite">Add to favourites</button>
           </div>
-          <div class="links1" id="link-fav1"></div>
+          <div class="links1 d-none" id="link-fav1"></div>
           <div class="links" id="link-fav">
           
             <a href="#">Take me to my favourites</a>
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 } 
 
-get_data()
+
 
 const add_to_favourites= (data)=> {
   const isFavourite = favouritesList.some((fav) => fav.id === data.id);
@@ -100,18 +97,6 @@ const add_to_favourites= (data)=> {
   }
 
 }
-
-
-
-const hide_default_view = () => {
-    const mainContainerSection = document.querySelector('.main__container-section');
-    const btnContainer = document.querySelector('.btn__container');
-    
-    
-    mainContainerSection.classList.toggle("d-none");
-    btnContainer.classList.toggle("d-none");
-    //linkGoBack.classList.toggle("d-none");
-};
 
 
 const changeH1 = () => {
@@ -130,6 +115,20 @@ const changeH1 = () => {
 
 }
 
+const hide_default_view = () => {
+    const mainContainerSection = document.querySelector('.main__container-section');
+    const btnContainer = document.querySelector('.btn__container');
+    const favoritClass = document.querySelector('.links1')
+    
+    
+    mainContainerSection.classList.toggle("d-none");
+    btnContainer.classList.toggle("d-none");
+   
+    favoritClass.classList.toggle("d-none");
+};
+
+
+
 const take_to_my_favourites = () => {
   hide_default_view();
   print_favourites();
@@ -137,26 +136,13 @@ const take_to_my_favourites = () => {
 };
 
 
-const hide_favourites_view = () => {
-
-   //<div class="links1" id="link-fav1"></div>
-  const favouritesContainer = document.querySelector('.links1');
-  const linkToFav = document.querySelector("#link-to-fav");
-  const linkGoBack = document.querySelector("#link-fav1");
-
-  favouritesContainer.classList.toggle("d-none");
-  // linkToFav.classList.toggle("d-none");
-  linkGoBack.classList.toggle("d-none");
-};
-
 
 
 const print_favourites = () => {
   
   const favouritesContainer = document.querySelector('.links1');
     if(favouritesContainer){
-      console.log(favouritesContainer);
-
+      
       favouritesContainer.innerHTML = ''
       if(favouritesList.length === 0){
           const favouriteElement = document.createElement('div');
@@ -165,19 +151,10 @@ const print_favourites = () => {
         <div class="book__container">
           <div>You don’t have any favourite yet.</div>
         </div>
-        <div id="go-back">
-          <a href="#">Go get another fact</a>
-        </div>
+       
       `;
 
         favouritesContainer.appendChild(favouriteElement);
-        const botonGoBack = document.getElementById('go-back');
-          if (botonGoBack) {
-        botonGoBack.addEventListener('click', hide_favourites_view);
-      }
-
-    
-      // document.getElementById('go-back').addEventListener('click', hide_favourites_view)
 
 
       } 
@@ -193,14 +170,13 @@ const print_favourites = () => {
             <div class="book__container">
               <div>${favourite.text}</div>
             </div>
+            
+            <img src="./src/assets/icons/decoration.svg" alt="decoration main page" class="card-img-top">
 
-        <div class="go-back">
-          <a href="#">Go get another fact</a>
-        </div>
       `;
 
         favouritesContainer.appendChild(favouriteElement);
-        document.querySelector(".go-back").addEventListener("click", hide_favourites_view);
+        
       });
     }
 
@@ -224,7 +200,9 @@ function showToast(message) {
   } else {
     console.error('Element with id #toast-container not found');
   }
-}
+};
+
+get_data()
 })
 
 
