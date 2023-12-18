@@ -109,18 +109,10 @@ const hide_default_view = () => {
 };
 
 const changeH1 = () => {
-  const esPaginaDeFavoritos = window.location.pathname.includes('GET A RANDOM FACT');
-
   const heading1 = document.querySelector('h1');
-
-  heading1.innerHTML = !esPaginaDeFavoritos ? 'FAVOURITES' : 'GET A RANDOM FACT';
-  
+  heading1.innerHTML = "FAVOURITES";
 } 
-const limpiarHTML = (selector) =>{
-  while (selector.firstChild) {
-      selector.removeChild(selector.firstChild);
-  }
-}
+
 const take_to_my_favourites = () => {
   hide_default_view();
   print_favourites();
@@ -132,25 +124,7 @@ const print_favourites = () => {
   
   const favouritesContainer = document.querySelector('.links');
     if(favouritesContainer){
-      favouritesContainer.innerHTML = ''
-
-      if(favouritesList.length == 0){
-        const favouriteElement = document.createElement('div');
-        favouriteElement.classList.add('main__container')
-        favouriteElement.innerHTML = `
-        
-        <div class="book__container div-favourite">
-            <div> You don't have any favourites yet.</div>
-        </div>
-        <div class="links" id="link-fav">
-          <a href="#">Go get another fact</a>
-        </div>
-      
-        `;
-
-        favouritesContainer.appendChild(favouriteElement);
-        limpiarHTML("div-favourite")
-      }
+      console.log(favouritesContainer);
       // favouritesContainer.innerHTML = ''
 
       favouritesList.forEach((favourite) => {
@@ -158,13 +132,7 @@ const print_favourites = () => {
 
         const favouriteElement = document.createElement('div');
         favouriteElement.classList.add('main__container')
-        favouriteElement.innerHTML = `
-        <div class="book__container">
-              <div>${favourite.text}</div>
-            </div>
-        
-        
-        `;
+        favouriteElement.textContent = `${favourite.text}`;
 
         favouritesContainer.appendChild(favouriteElement);
       });
