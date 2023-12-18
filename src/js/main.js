@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   // print response-data-API
   const print_api = (data) => {
     if( data !== null){
+
       randomDataElement.innerHTML = 
       `
       <div class="main__container">
@@ -70,139 +71,138 @@ document.addEventListener('DOMContentLoaded', () =>{
       </div>
     `;
     
-    document.getElementById('btn-fact').addEventListener('click',get_data)
-    document.getElementById('btn-favourites').addEventListener('click',() => add_to_favourites(data))
-    document.getElementById('link-fav').addEventListener('click', take_to_my_favourites)
+      document.getElementById('btn-fact').addEventListener('click',get_data)
+      document.getElementById('btn-favourites').addEventListener('click',() => add_to_favourites(data))
+      document.getElementById('link-fav').addEventListener('click', take_to_my_favourites)
       
 
-  }else{
-    return "error";
-  }
-
-} 
-
-
-
-const add_to_favourites= (data)=> {
-  const isFavourite = favouritesList.some((fav) => fav.id === data.id);
-
-  if (!isFavourite) {
-    favouritesList.push(data);
-    console.log('Favorito agregado:', data);
-    showToast('Added to Favourites')
-    
-
-  } else{
-    return showToast('This fact is already in Favourites');
-  }
-
-}
-
-
-const changeH1 = () => {
-  const isFavouritePage = document.querySelector('h1');
-
-  if (isFavouritePage) {
-    const isPageFav = isFavouritePage.textContent;
-    const heading1 = document.querySelector('h1');
-    if (isPageFav !== 'FAVOURITES') {
-      heading1.innerHTML = 'FAVOURITES';
-    } else {
-      heading1.innerHTML = 'GET A RANDOM FACT';
+    }else{
+      return "error";
     }
-    return isPageFav;
+
+  } 
+
+
+
+  const add_to_favourites= (data)=> {
+    const isFavourite = favouritesList.some((fav) => fav.id === data.id);
+
+    if (!isFavourite) {
+      favouritesList.push(data);
+      console.log('Favorito agregado:', data);
+      showToast('Added to Favourites')
+      
+
+    } else{
+      return showToast('This fact is already in Favourites');
+    }
+
   }
 
-}
 
-const hide_default_view = () => {
-    const mainContainerSection = document.querySelector('.main__container-section');
-    const btnContainer = document.querySelector('.btn__container');
-    const favoritClass = document.querySelector('.links1')
-    
-    
-    mainContainerSection.classList.toggle("d-none");
-    btnContainer.classList.toggle("d-none");
-   
-    favoritClass.classList.toggle("d-none");
-};
+  const changeH1 = () => {
+    const isFavouritePage = document.querySelector('h1');
 
+    if (isFavouritePage) {
+      const isPageFav = isFavouritePage.textContent;
+      const heading1 = document.querySelector('h1');
+      if (isPageFav !== 'FAVOURITES') {
+        heading1.innerHTML = 'FAVOURITES';
+      } else {
+        heading1.innerHTML = 'GET A RANDOM FACT';
+      }
+      return isPageFav;
+    }
 
+  }
 
-const take_to_my_favourites = () => {
-  hide_default_view();
-  print_favourites();
-  changeH1();
-};
-
-
-
-
-const print_favourites = () => {
-  
-  const favouritesContainer = document.querySelector('.links1');
-    if(favouritesContainer){
+  const hide_default_view = () => {
+      const mainContainerSection = document.querySelector('.main__container-section');
+      const btnContainer = document.querySelector('.btn__container');
+      const favoritClass = document.querySelector('.links1')
       
-      favouritesContainer.innerHTML = ''
-      if(favouritesList.length === 0){
+      
+      mainContainerSection.classList.toggle("d-none");
+      btnContainer.classList.toggle("d-none");
+    
+      favoritClass.classList.toggle("d-none");
+  };
+
+
+
+  const take_to_my_favourites = () => {
+    hide_default_view();
+    print_favourites();
+    changeH1();
+  };
+
+
+
+
+  const print_favourites = () => {
+    
+    const favouritesContainer = document.querySelector('.links1');
+      if(favouritesContainer){
+        
+        favouritesContainer.innerHTML = ''
+        if(favouritesList.length === 0){
+            const favouriteElement = document.createElement('div');
+          favouriteElement.classList.add('main__container-fav')
+          favouriteElement.innerHTML = `
+          <div class="book__container">
+            <div>You don’t have any favourite yet.</div>
+          </div>
+        `;
+
+          favouritesContainer.appendChild(favouriteElement);
+
+
+        } 
+
+        favouritesList.forEach((favourite) => {
+          console.log(favouritesList);
+
           const favouriteElement = document.createElement('div');
-        favouriteElement.classList.add('main__container-fav')
-        favouriteElement.innerHTML = `
-        <div class="book__container">
-          <div>You don’t have any favourite yet.</div>
-        </div>
-       
-      `;
-
-        favouritesContainer.appendChild(favouriteElement);
-
-
-      } 
-
-      favouritesList.forEach((favourite) => {
-        console.log(favouritesList);
-
-        const favouriteElement = document.createElement('div');
-        favouriteElement.classList.add('main__container-fav')
-        favouriteElement.innerHTML = `
-      
+          favouriteElement.classList.add('main__container-fav')
+          favouriteElement.innerHTML = `
         
-            <div class="book__container">
-              <div>${favourite.text}</div>
-            </div>
-            
-            <img src="./src/assets/icons/decoration.svg" alt="decoration main page" class="card-img-top">
+          
+              <div class="book__container">
+                <div>${favourite.text}</div>
+              </div>
+              
+              <img src="./src/assets/icons/decoration.svg" alt="decoration main page" class="card-img-top mb-sm-0">
 
-      `;
+        `;
 
-        favouritesContainer.appendChild(favouriteElement);
-        
-      });
-    }
+          favouritesContainer.appendChild(favouriteElement);
+          
+        });
+      }
 
-};
+  };
 
 
-function showToast(message) {
-  const toastContainer = document.getElementById('toast-container');
+  function showToast(message) {
+    const toastContainer = document.getElementById('toast-container');
 
-  if (toastContainer) {
-    const toast = new bootstrap.Toast(toastContainer);
+    if (toastContainer) {
+      const toast = new bootstrap.Toast(toastContainer);
 
-    const toastBody = toastContainer.querySelector('.toast-body');
+      const toastBody = toastContainer.querySelector('.toast-body');
 
-    if (toastBody) {
-      toastBody.textContent = message;
-      toast.show();
+      if (toastBody) {
+        toastBody.textContent = message;
+        toast.show();
+      } else {
+        console.error('Element with class .toast-body not found inside #toast-container');
+      }
     } else {
-      console.error('Element with class .toast-body not found inside #toast-container');
+      console.error('Element with id #toast-container not found');
     }
-  } else {
-    console.error('Element with id #toast-container not found');
-  }
-};
+  };
 
-get_data()
+  get_data()
 })
 
 
