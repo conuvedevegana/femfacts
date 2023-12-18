@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () =>{
       randomDataElement.innerHTML = 
       `
       <div class="main__container">
-          <div id="toast-container" class="toast col align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex flex-row fs-6">
+          <div id="toast-container" class="toast col align-items-center text-bg-success border-0 position-fixed end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex flex-row fs-5">
               <div class="toast-body"></div>
               <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>  
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       
 
     } else{
-      return showToast('This fact is already in Favourites');
+      return showToast('This fact is already in Favourites', true);
     }
 
   }
@@ -183,16 +183,22 @@ document.addEventListener('DOMContentLoaded', () =>{
   };
 
 
-  function showToast(message) {
+  function showToast(message, isRepeat=false) {
     const toastContainer = document.getElementById('toast-container');
 
     if (toastContainer) {
       const toast = new bootstrap.Toast(toastContainer);
-
+      
       const toastBody = toastContainer.querySelector('.toast-body');
 
-      if (toastBody) {
-        toastBody.textContent = message;
+        if (toastBody) {
+          toastBody.textContent = message;
+          toastContainer.classList.remove("text-bg-success", "text-bg-danger");
+          if (isRepeat) {
+            toastContainer.classList.add("text-bg-danger");
+          } else {
+            toastContainer.classList.add("text-bg-success");
+          }
         toast.show();
       } else {
         console.error('Element with class .toast-body not found inside #toast-container');

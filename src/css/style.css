@@ -70,6 +70,7 @@ a:hover {
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   line-height: 1.6875rem;
+  min-height: 10rem;
 }
 
 .btn__container{
@@ -134,19 +135,20 @@ a:hover {
     background-color: var(--main-bg-color);
     display: flex;
     flex-direction: column;
-    padding: 5rem 3rem;
+    padding: 5rem 6rem;
     justify-content: center;
     align-items: center;
     border: 0.05rem solid var(--primary-color);
     box-shadow: 10px 8px 19.6px 0px rgba(0, 0, 0, 0.15);
     gap: 6rem;
+    width: 60rem;
   }
   .main__container h1{
     font-size: var(--h1-D);
   }
   .book__container{
     font-size: var(--text-D);
-    
+    min-height: 8rem;
   }
   .btn__container{
     flex-direction: row;
