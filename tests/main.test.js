@@ -41,4 +41,66 @@ describe("main", () => {
     expect(typeof hide_default_view).toBe("function");
   });
 
+  
 });
+
+
+global.fetch = vi.fn();
+describe("main.js test", () => {
+
+
+    const apiResponse = {
+        "id": "1a2b3c",
+        "text": "this is an useless fact"
+    };
+    const successfulApiResponse = () => {
+        return {
+            ok: true,
+            json: () => Promise.resolve(apiResponse)
+        };
+    };
+    const wrongApiResponse = () => {
+        return {
+            ok: false,
+            json: () => vi.fn()
+        };
+    };
+    it('should handle a successful API response', async () => {
+    // Mockear una respuesta exitosa
+    const successfulApiResponse = {
+      ok: true,
+      json: () => Promise.resolve({ id: '1a2b3c', text: 'this is an useless fact' }),
+    };
+    fetch.mockResolvedValueOnce(successfulApiResponse);
+
+    // Llamar a la función y esperar la respuesta
+    await get_data();
+
+    // Verificar que fetch fue llamado con la URL correcta
+    expect(fetch).toHaveBeenCalledWith('https://uselessfacts.jsph.pl/api/v2/facts/random');
+
+    // Puedes hacer más aserciones según tus necesidades
+  });
+  it('should handle a failed API response', async () => {
+    // Mockear una respuesta fallida
+    const failedApiResponse = {
+      ok: false,
+      statusText: 'Not Found',
+    };
+    fetch.mockResolvedValueOnce(failedApiResponse);
+
+    // Llamar a la función y esperar la respuesta
+    await get_data();
+
+    // Verificar que fetch fue llamado con la URL correcta
+    expect(fetch).toHaveBeenCalledWith('https://uselessfacts.jsph.pl/api/v2/facts/random');
+
+    // Verificar que se actualizó el contenido del elemento con el mensaje de error
+    expect(document.getElementById('app').innerHTML).toContain('<div class="error">');
+  });
+});
+
+
+
+
+

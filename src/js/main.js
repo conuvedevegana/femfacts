@@ -16,19 +16,19 @@ document.addEventListener('DOMContentLoaded', () =>{
   //Get API
   const get_data = async () => {
     await fetch(api_url)
-      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(res => res.ok ? res.json() : Promise.reject(res))
       .then(data => print_api(data))
-      .catch (err => {
-        let msg = err.statusText || "unexpected error"
-
-        document.getElementById('app').innerHTML = 
-        `
-          <div class="error">
-              <p> Error ${err.status}: ${msg}</p>
-          </div>
-        `
-    })
-  }  
+      .catch(err => {
+        let msg = (err && err.statusText) || "unexpected error";
+  
+        document.getElementById('app').innerHTML =
+          `
+            <div class="error">
+                <p> Error ${err ? err.status : 'unknown'}: ${msg}</p>
+            </div>
+          `;
+      });
+  };  
   
 
   // print response-data-API
