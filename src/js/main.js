@@ -8,10 +8,6 @@ const randomDataElement = document.querySelector('#app');
 const api_url = "https://uselessfacts.jsph.pl/api/v2/facts/random";
 const favouritesList = [];
 
-/*
-document.addEventListener('DOMContentLoaded', () =>{
-})
-*/
 
   //Get API
   const get_data = async () => {
