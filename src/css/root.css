@@ -1,0 +1,19 @@
+
+:root {
+  --primary-color:#3A612F;
+  --main-bg-color:#F2F6F2;
+  --light-bg-color:#E9F1E7;
+  --white:#FFFFFF;
+  --grey:#E7E7E7;
+  --body-text-dark:#242424;
+  --h1-D: 3rem; 
+  --h1-M: 2.25rem; 
+  --h2-D: 2rem; 
+  --h2-M: 1.5rem;
+  --text-D: 1.5rem;
+  --text-M: 1.125rem;
+  --link-D: 1.5rem;
+  --link-M: 1.125rem;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
